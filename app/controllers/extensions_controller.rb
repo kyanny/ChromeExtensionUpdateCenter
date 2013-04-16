@@ -98,6 +98,6 @@ class ExtensionsController < ApplicationController
       render text: "Invalid version parameter", status: 403
     end
 
-    send_data extension.crx, type: 'application/x-chrome-extension', filename: extension.appid + ".crx"
+    send_data extension.crx, type: 'application/x-chrome-extension', filename: extension.appid + ".crx", disposition: :inline
   end
 end

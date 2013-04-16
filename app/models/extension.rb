@@ -17,7 +17,7 @@ class Extension < ActiveRecord::Base
   def unpack_crx
     return unless crx
     Dir.mktmpdir do |tmpdir|
-      CrxUnpack.unpack_contents(crx, tmpdir)
+      CrxUnpack.unpack_contents(crx.dup, tmpdir)
       manifest = JSON.parse(open(File.join(tmpdir, 'manifest.json')).read)
       self.name = manifest['name']
       self.version = manifest['version']
@@ -37,7 +37,7 @@ class Extension < ActiveRecord::Base
 
   def self.latest_versions
     self.pluck(:appid).uniq.map{ |appid|
-      self.where(appid: appid).order('version DESC').first
+      self.where(appid: appid, release: true).order('version DESC').first
     }
   end
 end
