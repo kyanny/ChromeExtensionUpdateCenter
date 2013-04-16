@@ -1,5 +1,7 @@
 # Chrome Extension Update Center
 
+[![Build Status](https://travis-ci.org/kyanny/ChromeExtensionUpdateCenter.png)](https://travis-ci.org/kyanny/ChromeExtensionUpdateCenter)
+
 ***Caution! It's yet alpha quality!***
 
 ![screenshot1.png](./screenshot1.png)
