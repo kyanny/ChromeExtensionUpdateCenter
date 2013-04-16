@@ -1,9 +1,5 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-def read_fixture_files(file)
-  open(File.expand_path(File.join(File.dirname(__FILE__), '..', 'fixtures', 'extensions', file))).read
-end
-
 FactoryGirl.define do
 
   factory :extension do

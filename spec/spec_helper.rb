@@ -37,3 +37,7 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+def read_fixture_files(file)
+  open(File.expand_path(File.join(File.dirname(__FILE__), 'fixtures', 'extensions', file))).read
+end
