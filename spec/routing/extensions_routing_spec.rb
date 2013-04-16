@@ -31,5 +31,12 @@ describe ExtensionsController do
       delete("/extensions/1").should route_to("extensions#destroy", :id => "1")
     end
 
+    it "routes to #updates" do
+      get("/extensions/updates.xml").should route_to("extensions#updates", :format => :xml)
+    end
+
+    it "routes to #crx" do
+      get("/extensions/1/crx").should route_to("extensions#crx", :id => "1")
+    end
   end
 end
