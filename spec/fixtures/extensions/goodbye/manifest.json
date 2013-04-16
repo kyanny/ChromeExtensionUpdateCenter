@@ -1,0 +1,14 @@
+{
+    "name": "Goodbye",
+    "version": "1.0",
+    "description": "Goodbye world",
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_title": "Goodbye",
+        "popup": "popup.html"
+    },
+    "permissions": [
+        "http://*/",
+        "https://*/"
+    ]
+}

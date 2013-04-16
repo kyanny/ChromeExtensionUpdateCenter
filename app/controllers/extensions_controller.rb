@@ -1,44 +1,25 @@
 class ExtensionsController < ApplicationController
-  # GET /extensions
-  # GET /extensions.json
+  respond_to :html, :json
+
   def index
     @extensions = Extension.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @extensions }
-    end
+    respond_with @extensions
   end
 
-  # GET /extensions/1
-  # GET /extensions/1.json
   def show
     @extension = Extension.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @extension }
-    end
+    respond_with @extension
   end
 
-  # GET /extensions/new
-  # GET /extensions/new.json
   def new
     @extension = Extension.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @extension }
-    end
+    respond_with @extension
   end
 
-  # GET /extensions/1/edit
   def edit
     @extension = Extension.find(params[:id])
   end
 
-  # POST /extensions
-  # POST /extensions.json
   def create
     @extension = Extension.new(params[:extension])
     @extension.store_binary_data
@@ -56,8 +37,6 @@ class ExtensionsController < ApplicationController
     end
   end
 
-  # PUT /extensions/1
-  # PUT /extensions/1.json
   def update
     @extension = Extension.find(params[:id])
 
@@ -72,8 +51,6 @@ class ExtensionsController < ApplicationController
     end
   end
 
-  # DELETE /extensions/1
-  # DELETE /extensions/1.json
   def destroy
     @extension = Extension.find(params[:id])
     @extension.destroy
