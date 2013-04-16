@@ -41,6 +41,9 @@ class ExtensionsController < ApplicationController
   # POST /extensions.json
   def create
     @extension = Extension.new(params[:extension])
+    @extension.store_binary_data
+    @extension.unpack_crx
+    @extension.calculate_appid
 
     respond_to do |format|
       if @extension.save
@@ -79,5 +82,22 @@ class ExtensionsController < ApplicationController
       format.html { redirect_to extensions_url }
       format.json { head :no_content }
     end
+  end
+
+  def updates
+    @extensions = Extension.latest_versions
+    respond_to do |format|
+      format.xml { render }
+    end
+  end
+
+  def crx
+    extension = Extension.find(params[:id])
+
+    if extension.version != params[:v]
+      render text: "Invalid version parameter", status: 403
+    end
+
+    send_data extension.crx, type: 'application/x-chrome-extension', filename: extension.appid + ".crx"
   end
 end
