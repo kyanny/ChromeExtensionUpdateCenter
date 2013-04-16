@@ -1,0 +1,41 @@
+<%= form_for(@extension) do |f| %>
+  <% if @extension.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@extension.errors.count, "error") %> prohibited this extension from being saved:</h2>
+
+      <ul>
+      <% @extension.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :appid %><br />
+    <%= f.text_field :appid %>
+  </div>
+  <div class="field">
+    <%= f.label :pem %><br />
+    <%= f.text_field :pem %>
+  </div>
+  <div class="field">
+    <%= f.label :crx %><br />
+    <%= f.text_field :crx %>
+  </div>
+  <div class="field">
+    <%= f.label :version %><br />
+    <%= f.text_field :version %>
+  </div>
+  <div class="field">
+    <%= f.label :release %><br />
+    <%= f.check_box :release %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
