@@ -39,5 +39,9 @@ RSpec.configure do |config|
 end
 
 def read_fixture_files(file)
-  open(File.expand_path(File.join(File.dirname(__FILE__), 'fixtures', 'extensions', file))).read
+  open(fixture_files(file)).read
+end
+
+def fixture_files(file)
+  File.expand_path(File.join(File.dirname(__FILE__), 'fixtures', 'extensions', file))
 end
